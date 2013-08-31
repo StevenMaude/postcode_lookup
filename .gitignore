@@ -1,0 +1,9 @@
+.csv2sql.py.*
+csv2sql.py
+bin/
+build/
+include/
+lib/
+local/
+*.sql
+*.csv
