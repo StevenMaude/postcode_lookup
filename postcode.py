@@ -36,7 +36,7 @@ def check_postcode(postcode):
     result = crsr.fetchone()
     
     if result is None:
-        return (None, None, None)
+        return (False, None, None)
     else:
         lat = result[0]
         lng = result[1]
