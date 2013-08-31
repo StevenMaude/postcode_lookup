@@ -47,7 +47,7 @@ def main():
     """
     Example postcode lookup
     """
-    # where are we?
+    # try looking up ScraperWiki
     postcode = 'L3 5RF'
     print check_postcode(postcode)
 
