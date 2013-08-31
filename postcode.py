@@ -11,7 +11,8 @@ def check_postcode(postcode):
     Take a potential postcode as string and return a tuple.
 
     First element is a boolean indicating whether string is a postcode,
-    second and third elements are floats or None (if not a valid postcode).
+    second and third elements are latitude and longitude, provided as
+    floats or None (if not a valid postcode).
 
     Returns (boolean, lat, lng).
     """
@@ -38,8 +39,8 @@ def check_postcode(postcode):
     if result is None:
         return (False, None, None)
     else:
-        lat = result[0]
-        lng = result[1]
+        lat = float(result[0])
+        lng = float(result[1])
         return (True, lat, lng)
 
 
