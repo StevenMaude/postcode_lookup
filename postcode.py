@@ -74,7 +74,7 @@ def tidy_postcode(postcode):
     Return a postcode string as upper case, remove any whitespace before and
     after postcode.
     """
-    return postcode.upper().lstrip().rstrip()
+    return postcode.upper().strip()
 
 
 def uk_postcode(postcode):
