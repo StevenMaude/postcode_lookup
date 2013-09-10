@@ -2,8 +2,8 @@
 Tests for postcode.py
 """
 from .context import postcode
-from postcode import *
-from nose.tools import *
+from postcode import tidy_postcode
+from nose.tools import assert_equal
 
 
 class TestTidyPostcode(object):
