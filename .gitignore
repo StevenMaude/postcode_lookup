@@ -5,6 +5,7 @@ build/
 include/
 lib/
 local/
+man/
 *.sql
 *.csv
 *.sqlite
