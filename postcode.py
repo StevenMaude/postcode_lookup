@@ -6,7 +6,8 @@ Module for looking up postcodes from string.
 import sqlite3
 
 
-def check_postcode(dbse, postcode):
+def check_postcode(dbse, postcode, country_code):
+    # TODO: check what this returns
     """
     Take a potential postcode as string and return a tuple.
 
@@ -16,8 +17,6 @@ def check_postcode(dbse, postcode):
     First element is a boolean indicating whether string is a postcode,
     second and third elements are latitude and longitude, provided as
     floats or None (if not a valid postcode).
-
-    Returns (boolean, lat, lng).
     """
     # connect to SQL
     # is it better to reopen a connection every time we do a lookup
@@ -26,12 +25,13 @@ def check_postcode(dbse, postcode):
     crsr = conn.cursor()
 
     # create a tuple for insertion into SQL query
-    query = (postcode, )
+    query = (postcode, country_code)
 
     # TODO: Rename postcode database
     # can't parametrize table name and bad to use string operations
     # to generate SQL queries as can be open to injection
-    crsr.execute("SELECT * FROM geonames WHERE postal_code=?", query)
+    crsr.execute("SELECT * FROM geonames WHERE postal_code=? AND country_code \
+            =?", query)
     result = crsr.fetchall()
     return result
 
@@ -53,7 +53,7 @@ def main():
     dbse = 'allCountries.sqlite'
     # tb_name = get_first_table_name(db)
     # print tb_name
-    results = check_postcode(dbse, 'L3')
+    results = check_postcode(dbse, '90210', 'US')
     if len(results) > 1:
         raise NonuniquePostcodeError("Postal code is not unique.")
 
@@ -69,7 +69,7 @@ def tidy_postcode(postcode):
     return postcode.upper().lstrip().rstrip()
 
 
-def uk_postcode(postcode):
+def uk_postcode(postcode, country_code):
     """
     Look up data for a UK postcode provided as string with a single
     whitespace between the outcode and incode.
@@ -77,7 +77,7 @@ def uk_postcode(postcode):
     pass
 
 
-def us_zipcode(zipcode):
+def us_zipcode(zipcode, country_code):
     """
     Look up ZIP code data for a 5 digit US ZIP code provided as a string.
     (Geonames DB only seems to include 5 digit codes at the moment.)
