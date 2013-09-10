@@ -20,6 +20,9 @@ def check_postcode(db, postcode):
     """
     Take a potential postcode as string and return a tuple.
 
+    Assume that the postcode is upper case (if alpha) and that any preceding
+    and following whitespace is stripped.
+
     First element is a boolean indicating whether string is a postcode,
     second and third elements are latitude and longitude, provided as
     floats or None (if not a valid postcode).
