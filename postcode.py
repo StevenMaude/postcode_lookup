@@ -74,7 +74,7 @@ def tidy_postcode(postcode):
     return postcode.upper().lstrip().rstrip()
 
 
-def uk_postcode(postcode, country_code):
+def uk_postcode(postcode):
     """
     Look up data for a UK postcode provided as string with a single
     whitespace between the outcode and incode.
@@ -84,7 +84,7 @@ def uk_postcode(postcode, country_code):
     check_unique_postcode_data(uk_lookup)
     return uk_lookup
 
-def us_zipcode(zipcode, country_code):
+def us_zipcode(zipcode):
     """
     Look up ZIP code data for a 5 digit US ZIP code provided as a string.
     (Geonames DB only seems to include 5 digit codes at the moment.)
