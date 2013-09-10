@@ -5,6 +5,8 @@ from .context import postcode
 from postcode import tidy_postcode
 from nose.tools import assert_equal
 
+class TestCheckPostcodeFunc(object):
+    pass
 
 class TestTidyPostcodeFunc(object):
     def it_should_change_lower_case_to_upper_case(self):
@@ -32,6 +34,15 @@ class TestTidyPostcodeFunc(object):
         result = tidy_postcode(testcode)
         assert_equal(result, 'L3 5RF')
 
+class TestCheckUniquePostcodeDataFunc(object):
+    def it_should_raise_exception_for_more_than_one_result():
+        pass
+
+    def it_should_not_raise_exception_for_zero_results():
+        pass
+
+    def it_should_not_raise_exception_for_one_result():
+        pass
 
 class TestUKPostcodeFunc(object):
     pass
