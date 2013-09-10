@@ -6,7 +6,7 @@ Module for looking up postcodes from string.
 import sqlite3
 
 
-def check_postcode(postcode, country_code, dbse = 'allCountries.sqlite'):
+def check_postcode(postcode, country_code, dbse='allCountries.sqlite'):
     # TODO: check what this returns
     """
     Take a potential postcode as string and return a tuple.
@@ -42,6 +42,7 @@ class NonuniquePostcodeError(Exception):
     """
     pass
 
+
 def check_unique_postcode_data(result):
     """
     Check if we only have one unique postcode result from database lookup.
@@ -51,6 +52,7 @@ def check_unique_postcode_data(result):
     # for other countries, this may not be true
     if len(result) > 1:
         raise NonuniquePostcodeError("Postal code is not unique.")
+
 
 def main():
     """
@@ -83,6 +85,7 @@ def uk_postcode(postcode):
     uk_lookup = check_postcode(postcode, 'GB')
     check_unique_postcode_data(uk_lookup)
     return uk_lookup
+
 
 def us_zipcode(zipcode):
     """
