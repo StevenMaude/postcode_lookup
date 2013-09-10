@@ -80,6 +80,13 @@ def main():
     for result in results:
         print result
 
+def tidy_postcode(postcode):
+    """
+    Make a postcode string upper case, remove any whitespace before and after
+    postcode.
+    """
+    return postcode.upper().lstrip().rstrip()
+
 def UK_postcode(postcode):
     """
     Look up data for a UK postcode provided as string with a single
