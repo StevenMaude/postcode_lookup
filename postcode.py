@@ -73,7 +73,6 @@ def main():
 
     print us_zipcode('90210')
     print uk_postcode('L3 5RF')
-    print uk_postcode('L3')
 
 
 def tidy_postcode(postcode):
@@ -90,11 +89,14 @@ def uk_postcode(postcode):
     whitespace between the outcode and incode.
     """
     postcode = tidy_postcode(postcode)
-    uk_lookup = check_postcode(postcode, 'GB')
-    check_unique_postcode_data(uk_lookup)
-    # TODO: combine data from outcode and full postcode
-    return uk_lookup
+    uk_fullcode_lookup = check_postcode(postcode, 'GB')
+    check_unique_postcode_data(uk_fullcode_lookup)
+    # combine data from outcode and full postcode
+    uk_outcode_lookup = check_postcode(postcode.split()[0], 'GB')
+    combined_lookup = uk_outcode_lookup[0][:-3] + uk_fullcode_lookup[0][-3:]
 
+    # return uk_fullcode_lookup, uk_outcode_lookup, combined_lookup
+    return [combined_lookup]
 
 def us_zipcode(zipcode):
     """
