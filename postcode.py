@@ -5,17 +5,6 @@ Module for looking up postcodes from string.
 # TODO: write tests and test more thoroughly
 import sqlite3
 
-#def get_first_table_name(db):
-#    """
-#    Return first table from a SQLite database as unicode.
-#    """
-#    conn = sqlite3.connect(db)
-#    crsr = conn.cursor()
-#    crsr.execute("SELECT name FROM sqlite_master WHERE type = 'table';")
-#    name = crsr.fetchall()[0][0]
-#    conn.close()
-#   return name
-
 
 def check_postcode(dbse, postcode):
     """
