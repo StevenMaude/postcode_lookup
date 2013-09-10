@@ -16,7 +16,8 @@ import sqlite3
 #    conn.close()
 #   return name
 
-def check_postcode(db, postcode):
+
+def check_postcode(dbse, postcode):
     """
     Take a potential postcode as string and return a tuple.
 
@@ -32,21 +33,21 @@ def check_postcode(db, postcode):
     # connect to SQL
     # is it better to reopen a connection every time we do a lookup
     # or to leave a connection open?
-    conn = sqlite3.connect(db)
+    conn = sqlite3.connect(dbse)
     crsr = conn.cursor()
 
     # remove any whitespace
     # postcode = ''.join(postcode.split())
 
     # create a tuple for insertion into SQL query
-    t = (postcode, )
+    query = (postcode, )
 
     # TODO: Rename postcode database
     # can't parametrize table name and bad to use string operations
     # to generate SQL queries as can be open to injection
-    crsr.execute("SELECT * FROM geonames WHERE postal_code=?", t)
+    crsr.execute("SELECT * FROM geonames WHERE postal_code=?", query)
     result = crsr.fetchall()
-    return result    
+    return result
    # if result is None:
    #     return (False, None, None)
    # else:
@@ -54,11 +55,13 @@ def check_postcode(db, postcode):
    #     lng = float(result[1])
    #     return (True, lat, lng)
 
+
 class NonuniquePostcodeError(Exception):
     """
     For cases where a postcode lookup returns more than one result.
     """
     pass
+
 
 def main():
     """
@@ -67,15 +70,16 @@ def main():
     # try looking up ScraperWiki
     # postcode = 'L3 5RF'
     # print check_postcode(postcode)
-    db = 'allCountries.sqlite'
+    dbse = 'allCountries.sqlite'
     # tb_name = get_first_table_name(db)
     # print tb_name
-    results = check_postcode(db, 'L3')
+    results = check_postcode(dbse, 'L3')
     if len(results) > 1:
         raise NonuniquePostcodeError("Postal code is not unique.")
 
     for result in results:
         print result
+
 
 def tidy_postcode(postcode):
     """
@@ -84,14 +88,16 @@ def tidy_postcode(postcode):
     """
     return postcode.upper().lstrip().rstrip()
 
-def UK_postcode(postcode):
+
+def uk_postcode(postcode):
     """
     Look up data for a UK postcode provided as string with a single
     whitespace between the outcode and incode.
     """
     pass
 
-def US_zipcode(zipcode):
+
+def us_zipcode(zipcode):
     """
     Look up ZIP code data for a 5 digit US ZIP code provided as a string.
     (Geonames DB only seems to include 5 digit codes at the moment.)
