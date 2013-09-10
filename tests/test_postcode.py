@@ -21,11 +21,12 @@ class TestTidyPostcodeFunc(object):
         testcode = '\t  50000'
         result = tidy_postcode(testcode)
         assert_equal(result, '50000')
-    
+
     def it_should_strip_right_whitespace(self):
         testcode = '30000  \n\t  '
         result = tidy_postcode(testcode)
         assert_equal(result, '30000')
+
 
 class TestUKPostcodeFunc(object):
     pass
