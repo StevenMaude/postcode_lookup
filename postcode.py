@@ -66,6 +66,7 @@ def main():
 
     print us_zipcode('90210')
     print uk_postcode('L3 5RF')
+    print uk_postcode('L3')
 
 
 def tidy_postcode(postcode):
