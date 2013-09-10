@@ -32,5 +32,6 @@ class TestTidyPostcodeFunc(object):
         result = tidy_postcode(testcode)
         assert_equal(result, 'L3 5RF')
 
+
 class TestUKPostcodeFunc(object):
     pass
