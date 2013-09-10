@@ -10,7 +10,8 @@ class TestCheckPostcodeFunc(object):
     # Create a database fixture and checking that the
     # lookup works as expected?
     # Is this sufficient or do I need to mock every function call?
-    pass
+    def it_should_return_rows_for_postal_code_in_database(self):
+        pass
 
 class TestTidyPostcodeFunc(object):
     def it_should_change_lower_case_to_upper_case(self):
