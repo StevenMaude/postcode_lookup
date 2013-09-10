@@ -2,8 +2,8 @@
 Tests for postcode.py
 """
 from .context import postcode
-from postcode import tidy_postcode
-from nose.tools import assert_equal
+from postcode import *
+from nose.tools import assert_equal, assert_raises
 
 class TestCheckPostcodeFunc(object):
     pass
@@ -35,14 +35,28 @@ class TestTidyPostcodeFunc(object):
         assert_equal(result, 'L3 5RF')
 
 class TestCheckUniquePostcodeDataFunc(object):
-    def it_should_raise_exception_for_more_than_one_result():
-        pass
+    def it_should_raise_exception_for_more_than_one_result(self):
+        result = [(u'TR', u'10000', u'Be\u015fpinar K\xf6y\xfc',
+                   u'Balikesir', u'10', u'Balikesir', u'1',
+                   u'K\xfcpeler(Ertu\u011frul)', u'52', 39.5, 27.81, 4),
+                  (u'TR', u'10000', u'Beyk\xf6y K\xf6y\xfc', u'Balikesir',
+                   u'10', u'Balikesir', u'1', u'K\xf6yler', u'45',
+                   39.9499, 32.4414, 3),
+                  (u'TR', u'10000', u'Yenice K\xf6y\xfc', u'Balikesir', u'10',
+                   u'Balikesir', u'1', u'K\xf6yler', u'45', 40.25, 28.1333, 4)]
+            #result = [(), ()]
+        assert_raises(NonuniquePostcodeError, check_unique_postcode_data,
+                      result)
 
-    def it_should_not_raise_exception_for_zero_results():
-        pass
+    def it_should_not_raise_exception_for_zero_results(self):
+        result = []
+        check_unique_postcode_data(result)
 
-    def it_should_not_raise_exception_for_one_result():
-        pass
+    def it_should_not_raise_exception_for_one_result(self):
+        result = [(u'GB', u'L3 5RF', u'Central Ward', u'England', u'ENG',
+                   u'', u'', u'Liverpool District (B)',
+                   u'E08000012', 53.4054171778326, -2.96977047535776, 6)]
+        check_unique_postcode_data(result)
 
 class TestUKPostcodeFunc(object):
     pass
