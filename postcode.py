@@ -32,12 +32,6 @@ def check_postcode(db, postcode):
     conn = sqlite3.connect(db)
     crsr = conn.cursor()
 
-    # ensure postcode is upper case
-    postcode = postcode.upper()
-    
-    # remove left and right whitespace
-    postcode = postcode.lstrip().rstrip()
-
     # remove any whitespace
     # postcode = ''.join(postcode.split())
 
