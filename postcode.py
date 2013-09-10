@@ -6,7 +6,7 @@ Module for looking up postcodes from string.
 import sqlite3
 
 
-def check_postcode(dbse, postcode, country_code):
+def check_postcode(postcode, country_code, dbse = 'allCountries.sqlite'):
     # TODO: check what this returns
     """
     Take a potential postcode as string and return a tuple.
@@ -59,10 +59,9 @@ def main():
     # try looking up ScraperWiki
     # postcode = 'L3 5RF'
     # print check_postcode(postcode)
-    dbse = 'allCountries.sqlite'
     # tb_name = get_first_table_name(db)
     # print tb_name
-    results = check_postcode(dbse, '90210', 'US')
+    results = check_postcode('90210', 'US')
     check_unique_postcode_data(result)
 
     for result in results:
