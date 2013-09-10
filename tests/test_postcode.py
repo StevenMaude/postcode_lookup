@@ -63,12 +63,12 @@ class TestCheckUniquePostcodeDataFunc(object):
                    u'E08000012', 53.4054171778326, -2.96977047535776, 6)]
         check_unique_postcode_data(result)
 
-class TestUKPostcodeFunc(object):
+class TestukPostcodeFunc(object):
     # Again, how to test with actual database lookup, fixture or mock
-    def it_should_find_data_for_a_valid_UK_postcode(self):
+    def it_should_find_data_for_a_valid_uk_postcode(self):
         pass
 
-class TestUSZipcodeFunc(object):
+class TestusZipcodeFunc(object):
     # Again, how to test with actual database lookup, fixture or mock
     def it_should_cut_the_first_5_digits_from_a_9_digit_zip(self):
         pass
