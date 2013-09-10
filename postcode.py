@@ -61,11 +61,9 @@ def main():
     # print check_postcode(postcode)
     # tb_name = get_first_table_name(db)
     # print tb_name
-    results = check_postcode('90210', 'US')
-    check_unique_postcode_data(result)
 
-    for result in results:
-        print result
+    print us_zipcode('90210')
+    print uk_postcode('L3 5RF')
 
 
 def tidy_postcode(postcode):
@@ -81,8 +79,10 @@ def uk_postcode(postcode, country_code):
     Look up data for a UK postcode provided as string with a single
     whitespace between the outcode and incode.
     """
-    pass
-
+    postcode = tidy_postcode(postcode)
+    uk_lookup = check_postcode(postcode, 'GB')
+    check_unique_postcode_data(uk_lookup)
+    return uk_lookup
 
 def us_zipcode(zipcode, country_code):
     """
@@ -91,7 +91,10 @@ def us_zipcode(zipcode, country_code):
     """
     # check length, want to drop any digits after dash as these aren't
     # included
-    pass
+    zipcode = tidy_postcode(zipcode)
+    us_lookup = check_postcode(zipcode, 'US')
+    check_unique_postcode_data(us_lookup)
+    return us_lookup
 
 if __name__ == '__main__':
     main()
