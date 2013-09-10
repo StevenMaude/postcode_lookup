@@ -9,7 +9,14 @@ import sqlite3
 def check_postcode(postcode, country_code, dbse='allCountries.sqlite'):
     # TODO: check what this returns
     """
-    Take a potential postcode as string and return a tuple.
+    Take a potential postcode as string and return a list of tuples.
+    
+    Geonames database is structured as country_code, postal_code, place_name,
+    admin_name1, admin_code1, admin_name2, admin_code2, admin_name3,
+    admin_code3, latitude, longitude, accuracy.
+
+    Latitude, longitude should be handled as floats, accuray as an int,
+    the other columns are strings.
 
     Assume that the postcode is upper case (if alpha) and that any preceding
     and following whitespace is stripped.
@@ -85,6 +92,7 @@ def uk_postcode(postcode):
     postcode = tidy_postcode(postcode)
     uk_lookup = check_postcode(postcode, 'GB')
     check_unique_postcode_data(uk_lookup)
+    # TODO: combine data from outcode and full postcode
     return uk_lookup
 
 
