@@ -57,6 +57,12 @@ def check_postcode(db, postcode):
    #     lng = float(result[1])
    #     return (True, lat, lng)
 
+class NonuniquePostcodeError(Exception):
+    """
+    For cases where a postcode lookup returns more than one result.
+    """
+    pass
+
 def main():
     """
     Example postcode lookup
@@ -68,6 +74,8 @@ def main():
     # tb_name = get_first_table_name(db)
     # print tb_name
     results = check_postcode(db, 'L3')
+    if len(results) > 1:
+        raise NonuniquePostcodeError("Postal code is not unique.")
 
     for result in results:
         print result
