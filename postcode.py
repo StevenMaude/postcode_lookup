@@ -82,7 +82,7 @@ def main():
 
 def UK_postcode(postcode):
     """
-    Look up postcode data for a UK postcode provided as string with a single
+    Look up data for a UK postcode provided as string with a single
     whitespace between the outcode and incode.
     """
     pass
