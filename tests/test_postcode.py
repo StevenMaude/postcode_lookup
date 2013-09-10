@@ -5,9 +5,6 @@ from .context import postcode
 from postcode import *
 from nose.tools import *
 
-# import postcode
-
-# print postcode.tidy_postcode('ls2')
 
 class TestTidyPostcode(object):
     def it_should_change_lower_case_to_upper_case(self):
