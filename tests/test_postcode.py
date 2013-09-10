@@ -27,6 +27,10 @@ class TestTidyPostcodeFunc(object):
         result = tidy_postcode(testcode)
         assert_equal(result, '30000')
 
+    def it_should_strip_left_and_right_whitespace(self):
+        testcode = '  \n\t  L3 5RF    \t\t\n\t '
+        result = tidy_postcode(testcode)
+        assert_equal(result, 'L3 5RF')
 
 class TestUKPostcodeFunc(object):
     pass
