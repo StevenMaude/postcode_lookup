@@ -50,7 +50,6 @@ class TestCheckUniquePostcodeDataFunc(object):
                    39.9499, 32.4414, 3),
                   (u'TR', u'10000', u'Yenice K\xf6y\xfc', u'Balikesir', u'10',
                    u'Balikesir', u'1', u'K\xf6yler', u'45', 40.25, 28.1333, 4)]
-            #result = [(), ()]
         assert_raises(NonuniquePostcodeError, check_unique_postcode_data,
                       result)
 
