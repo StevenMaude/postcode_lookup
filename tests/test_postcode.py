@@ -6,6 +6,10 @@ from postcode import *
 from nose.tools import assert_equal, assert_raises
 
 class TestCheckPostcodeFunc(object):
+    # How to test?
+    # Create a database fixture and checking that the
+    # lookup works as expected?
+    # Is this sufficient or do I need to mock every function call?
     pass
 
 class TestTidyPostcodeFunc(object):
@@ -59,4 +63,9 @@ class TestCheckUniquePostcodeDataFunc(object):
         check_unique_postcode_data(result)
 
 class TestUKPostcodeFunc(object):
+    # Again, how to test with actual database lookup, fixture or mock
+    pass
+
+class TestUSZipcodeFunc(object):
+    # Again, how to test with actual database lookup, fixture or mock
     pass
