@@ -7,9 +7,10 @@ from nose.tools import assert_equal, assert_raises
 
 class TestCheckPostcodeFunc(object):
     # How to test?
-    # Create a database fixture and checking that the
+    # Just use the database directly?
+    # Create a database fixture and check that the
     # lookup works as expected?
-    # Is this sufficient or do I need to mock every function call?
+    # Mock every function call?
     def it_should_return_rows_for_postal_code_in_database(self):
         pass
 
