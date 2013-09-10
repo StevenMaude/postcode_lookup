@@ -42,6 +42,15 @@ class NonuniquePostcodeError(Exception):
     """
     pass
 
+def check_unique_postcode_data(result):
+    """
+    Check if we only have one unique postcode result from database lookup.
+    """
+    # if looking for UK or US postcodes, should only find one entry in
+    # database
+    # for other countries, this may not be true
+    if len(result) > 1:
+        raise NonuniquePostcodeError("Postal code is not unique.")
 
 def main():
     """
@@ -54,8 +63,7 @@ def main():
     # tb_name = get_first_table_name(db)
     # print tb_name
     results = check_postcode(dbse, '90210', 'US')
-    if len(results) > 1:
-        raise NonuniquePostcodeError("Postal code is not unique.")
+    check_unique_postcode_data(result)
 
     for result in results:
         print result
