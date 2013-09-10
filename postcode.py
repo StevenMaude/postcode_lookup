@@ -36,9 +36,6 @@ def check_postcode(dbse, postcode):
     conn = sqlite3.connect(dbse)
     crsr = conn.cursor()
 
-    # remove any whitespace
-    # postcode = ''.join(postcode.split())
-
     # create a tuple for insertion into SQL query
     query = (postcode, )
 
@@ -48,12 +45,6 @@ def check_postcode(dbse, postcode):
     crsr.execute("SELECT * FROM geonames WHERE postal_code=?", query)
     result = crsr.fetchall()
     return result
-   # if result is None:
-   #     return (False, None, None)
-   # else:
-   #     lat = float(result[0])
-   #     lng = float(result[1])
-   #     return (True, lat, lng)
 
 
 class NonuniquePostcodeError(Exception):
