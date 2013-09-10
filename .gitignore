@@ -9,3 +9,4 @@ man/
 *.sql
 *.csv
 *.sqlite
+*.pyc
