@@ -70,8 +70,8 @@ class TestukPostcodeFunc(object):
 
 class TestusZipcodeFunc(object):
     # Again, how to test with actual database lookup, fixture or mock
-    def it_should_cut_the_first_5_digits_from_a_9_digit_zip(self):
+    def it_should_work_for_9_digit_zipcodes(self):
         pass
 
-    def it_should_find_data_for_a_valid_zipcode(self):
+    def it_should_work_for_5_digit_zipcodes(self):
         pass
