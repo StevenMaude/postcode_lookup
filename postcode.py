@@ -10,7 +10,6 @@ import sqlite3
 
 
 def check_postcode(postcode, country_code, dbse='allCountries.sqlite'):
-    # TODO: check what this returns
     """
     Take a potential postcode as string and return a list of tuples.
 
