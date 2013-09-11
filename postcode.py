@@ -1,8 +1,11 @@
+#!/usr/bin/python
+# coding=UTF-8
 """
 Module for looking up postcodes from string.
 """
 
 # TODO: write tests and test more thoroughly
+import re
 import sqlite3
 
 
@@ -90,8 +93,11 @@ def us_zipcode(zipcode):
     Look up ZIP code data for a 5 digit US ZIP code provided as a string.
     (Geonames DB only seems to include 5 digit codes at the moment.)
     """
+    
     # check length, want to drop any digits after dash as these aren't
     # included
+    # handle hyphen, en and em dashes
+    zipcode = re.split("-|–|—", zipcode)[0]
     zipcode = tidy_postcode(zipcode)
     us_lookup = check_postcode(zipcode, 'US')
     check_unique_postcode_data(us_lookup)
@@ -108,7 +114,7 @@ def main():
     # tb_name = get_first_table_name(db)
     # print tb_name
 
-    print us_zipcode('90210')
+    print us_zipcode('80122-1905')
     print uk_postcode('L3 5RF')
 
 
