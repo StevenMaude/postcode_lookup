@@ -10,7 +10,7 @@ def check_postcode(postcode, country_code, dbse='allCountries.sqlite'):
     # TODO: check what this returns
     """
     Take a potential postcode as string and return a list of tuples.
-    
+
     Geonames database is structured as country_code, postal_code, place_name,
     admin_name1, admin_code1, admin_name2, admin_code2, admin_name3,
     admin_code3, latitude, longitude, accuracy.
@@ -61,20 +61,6 @@ def check_unique_postcode_data(result):
         raise NonuniquePostcodeError("Postal code is not unique.")
 
 
-def main():
-    """
-    Example postcode lookup
-    """
-    # try looking up ScraperWiki
-    # postcode = 'L3 5RF'
-    # print check_postcode(postcode)
-    # tb_name = get_first_table_name(db)
-    # print tb_name
-
-    print us_zipcode('90210')
-    print uk_postcode('L3 5RF')
-
-
 def tidy_postcode(postcode):
     """
     Return a postcode string as upper case, remove any whitespace before and
@@ -98,6 +84,7 @@ def uk_postcode(postcode):
     # return uk_fullcode_lookup, uk_outcode_lookup, combined_lookup
     return [combined_lookup]
 
+
 def us_zipcode(zipcode):
     """
     Look up ZIP code data for a 5 digit US ZIP code provided as a string.
@@ -109,6 +96,21 @@ def us_zipcode(zipcode):
     us_lookup = check_postcode(zipcode, 'US')
     check_unique_postcode_data(us_lookup)
     return us_lookup
+
+
+def main():
+    """
+    Example postcode lookup
+    """
+    # try looking up ScraperWiki
+    # postcode = 'L3 5RF'
+    # print check_postcode(postcode)
+    # tb_name = get_first_table_name(db)
+    # print tb_name
+
+    print us_zipcode('90210')
+    print uk_postcode('L3 5RF')
+
 
 if __name__ == '__main__':
     main()
