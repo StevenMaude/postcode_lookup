@@ -81,7 +81,7 @@ def uk_postcode(postcode):
     uk_outcode_lookup = check_postcode(postcode.split()[0], 'GB')
     combined_lookup = uk_outcode_lookup[0][:-3] + uk_fullcode_lookup[0][-3:]
 
-    # return uk_fullcode_lookup, uk_outcode_lookup, combined_lookup
+    # return as list to keep things consistent with us_zipcode
     return [combined_lookup]
 
 
